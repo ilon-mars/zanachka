@@ -1,24 +1,11 @@
-# zanachka
+# ZANACHKA (SPA for budget planning)
 
-## Project setup
-```
-npm install
-```
+## Emoji map in commits
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+✨ - style changes
+🌵 - vue components changes
+🌌 - image changes
+ℹ️ - info files changes
+🧰 - config changes
+🗃 - mockup files changes
+⏳ - temporary changes
