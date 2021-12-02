@@ -9,3 +9,5 @@
 🧰 - config changes
 🗃 - mockup files changes
 ⏳ - temporary changes
+
+[View site](https://ilon-mars.github.io/zanachka/)
