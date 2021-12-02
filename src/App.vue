@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-promo />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppPromo from '@/components/AppPromo'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    AppPromo
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+@import '@/assets/sass/_reset'
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap')
+
+#app
+  background-color: #191919
+  min-height: 100vh
+  font-family: 'Montserrat', sans-serif
+  color: #f5f5f5
 </style>
