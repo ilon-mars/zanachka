@@ -1,5 +1,5 @@
 <template>
-  <section class="promo">
+  <section class="promo section">
     <h1 class="promo__title">Заначка</h1>
 
     <h2 class="promo__subtitle">Когда копить уже нет сил, создай заначку</h2>
