@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <app-promo />
+
+    <app-methods />
   </div>
 </template>
 
 <script>
 import AppPromo from '@/components/AppPromo'
+import AppMethods from '@/components/AppMethods'
 
 export default {
   name: 'App',
 
   components: {
-    AppPromo
+    AppPromo, AppMethods
   }
 }
 </script>
