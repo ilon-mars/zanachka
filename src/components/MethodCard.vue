@@ -16,7 +16,7 @@
       <router-link :to="`/${method.key}#calculate`" class="method__calculate-link">Перейти к расчету &#10132;</router-link>
     </div>
 
-    <button class="method__show-more" @click="showIndex(method.key)">{{ activeCards.includes(method.key) ? 'Свернуть' : 'Читать полностью' }}</button>
+    <button class="method__show-more" @click="toggleCardDescription(method.key)">{{ activeCards.includes(method.key) ? 'Свернуть' : 'Читать полностью' }}</button>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   },
 
   methods: {
-    showIndex (key) {
+    toggleCardDescription (key) {
       const index = this.activeCards.indexOf(key)
 
       if (index > -1) {
