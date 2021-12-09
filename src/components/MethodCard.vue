@@ -13,7 +13,7 @@
         <li class="method__tip" v-for="(tip, index) in method.tips" :key="index">{{ tip }}</li>
       </ul>
 
-      <router-link :to="`/${method.key}#calculate`">Перейти к расчету</router-link>
+      <router-link :to="`/${method.key}#calculate`" class="method__calculate-link">Перейти к расчету &#10132;</router-link>
     </div>
 
     <button class="method__show-more" @click="showIndex(method.key)">{{ activeCards.includes(method.key) ? 'Свернуть' : 'Читать полностью' }}</button>
@@ -85,5 +85,8 @@ export default {
     font-size: 16px
     line-height: 20px
     font-weight: 100
+
+  &__calculate-link
+    color: inherit
 
 </style>
