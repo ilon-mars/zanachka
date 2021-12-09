@@ -3,18 +3,21 @@
     <app-promo />
 
     <app-methods />
+
+    <app-calculate />
   </div>
 </template>
 
 <script>
 import AppPromo from '@/components/AppPromo'
 import AppMethods from '@/components/AppMethods'
+import AppCalculate from './components/AppCalculate'
 
 export default {
   name: 'App',
 
   components: {
-    AppPromo, AppMethods
+    AppPromo, AppMethods, AppCalculate
   }
 }
 </script>
