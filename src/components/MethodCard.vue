@@ -13,6 +13,7 @@
         <li class="method__tip" v-for="(tip, index) in method.tips" :key="index">{{ tip }}</li>
       </ul>
 
+      <router-link to="/envelopes#calculate">Перейти к расчету</router-link>
     </div>
 
     <button class="method__show-more" @click="showIndex(method.id)">{{ activeCards.includes(method.id) ? 'Свернуть' : 'Читать полностью' }}</button>
@@ -29,7 +30,7 @@ export default {
 
   data () {
     return {
-      activeCards: []
+      activeCards: [1]
     }
   },
 

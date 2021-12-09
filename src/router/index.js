@@ -3,6 +3,15 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+const scrollBehavior = function (to) {
+  if (to.hash) {
+    return {
+      selector: to.hash,
+      behavior: 'smooth'
+    }
+  }
+}
+
 const routes = [
   {
     path: '/envelopes',
@@ -33,6 +42,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
+  scrollBehavior,
   base: process.env.BASE_URL,
   routes
 })

@@ -1,5 +1,5 @@
 <template>
-  <form class="calculate__budget">
+  <form class="calculate__budget" id="calculate">
     <h3 class="calculate__budget-name">Название метода</h3>
 
     <fieldset class="calculate__budget-income">
