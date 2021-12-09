@@ -67,6 +67,7 @@ export default {
     max-height: 0
     overflow: hidden
     transition: all 0.4s ease-in-out
+    line-height: 150%
 
     &.active
       margin-bottom: 15px
@@ -88,5 +89,6 @@ export default {
 
   &__calculate-link
     color: inherit
+    font-weight: 100
 
 </style>
