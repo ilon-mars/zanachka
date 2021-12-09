@@ -4,7 +4,7 @@
 
     <p class="method__description">{{ method.description }}</p>
 
-    <div :class="['method__details', activeCards.includes(method.id) ? 'active' : '']">
+    <div :class="['method__details', activeCards.includes(method.key) ? 'active' : '']">
       <ul class="method__steps">
         <li class="method__step" v-for="(step, index) in method.steps" :key="index">{{ step }}</li>
       </ul>
@@ -16,7 +16,7 @@
       <router-link to="/envelopes#calculate">Перейти к расчету</router-link>
     </div>
 
-    <button class="method__show-more" @click="showIndex(method.id)">{{ activeCards.includes(method.id) ? 'Свернуть' : 'Читать полностью' }}</button>
+    <button class="method__show-more" @click="showIndex(method.key)">{{ activeCards.includes(method.key) ? 'Свернуть' : 'Читать полностью' }}</button>
   </div>
 </template>
 
@@ -30,18 +30,18 @@ export default {
 
   data () {
     return {
-      activeCards: [1]
+      activeCards: []
     }
   },
 
   methods: {
-    showIndex (id) {
-      const index = this.activeCards.indexOf(id)
+    showIndex (key) {
+      const index = this.activeCards.indexOf(key)
 
       if (index > -1) {
         this.activeCards.splice(index, 1)
       } else {
-        this.activeCards.push(id)
+        this.activeCards.push(key)
       }
     }
   }

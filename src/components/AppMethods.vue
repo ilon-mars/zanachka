@@ -1,6 +1,6 @@
 <template>
   <section class="container section methods">
-    <method-card v-for="method in methods" :key="method.id" :method="method" />
+    <method-card v-for="method in methods" :key="method.key" :method="method" />
   </section>
 </template>
 
