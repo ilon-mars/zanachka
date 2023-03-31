@@ -1,34 +1,47 @@
 <template>
-  <li class="method">
+  <li class="method" :class="{ active: !isCollapsed }">
     <h3 class="method__name">{{ method.name }}</h3>
     <p class="method__description">{{ method.description }}</p>
     <button
       class="method__toggle text-button"
       :class="isCollapsed ? 'method__toggle--expand' : 'method__toggle--collapse'"
+      @click="toggle"
     >
       {{ isCollapsed ? 'Подробнее' : 'Скрыть' }}
     </button>
-    <button class="method__scroll-to text-button">Перейти к расчету</button>
+    <RouterLink class="method__scroll-to text-button" :to="{ name: method.key }"
+      >Перейти к расчету</RouterLink
+    >
   </li>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { Method } from '@/types'
+import { ref } from 'vue';
+import type { Method } from '@/types';
 
 defineProps<{
-  method: Method
-}>()
+  method: Method;
+}>();
 
-const isCollapsed = ref(true)
+const isCollapsed = ref(true);
+
+const toggle = () => (isCollapsed.value = !isCollapsed.value);
 </script>
 
 <style lang="sass">
 .method
+  +transition
+
   display: flex
   flex-direction: column
   align-items: flex-start
   gap: 20px
+
+  &.active
+    grid-column: -1 / 1
+    order: -1
+    padding: 16px
+    background-color: $light-opacity-s
 
   &__name
     font-weight: 700

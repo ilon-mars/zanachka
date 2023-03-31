@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import MethodCard from './MethodCard.vue'
-import { methods } from '@/utils/constants'
+import MethodCard from './MethodCard.vue';
+import { methods } from '@/utils/constants';
 </script>
 
 <style lang="sass">
