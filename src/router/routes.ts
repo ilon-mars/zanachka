@@ -5,7 +5,7 @@ import { kebabToPascalCase } from '@/utils/functions';
 const methodsRoutes: RouteRecordRaw[] = [];
 
 MethodEnum.values.map(method => {
-  const component = () => import(`@/components/methods/${kebabToPascalCase(method)}Method.vue`);
+  const component = () => import(`@/components/Calculator/${kebabToPascalCase(method)}Form.vue`);
 
   const route: RouteRecordRaw = {
     name: method,

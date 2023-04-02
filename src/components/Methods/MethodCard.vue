@@ -1,14 +1,8 @@
 <template>
-  <li class="method" :class="{ active: !isCollapsed }">
+  <li class="method" :class="{ active: method.isActive }" v-if="method.key">
     <h3 class="method__name">{{ method.name }}</h3>
     <p class="method__description">{{ method.description }}</p>
-    <button
-      class="method__toggle text-button"
-      :class="isCollapsed ? 'method__toggle--expand' : 'method__toggle--collapse'"
-      @click="toggle"
-    >
-      {{ isCollapsed ? 'Подробнее' : 'Скрыть' }}
-    </button>
+    <button class="method__details text-button" @click="$emit('openModal', method.steps)">Подробнее</button>
     <RouterLink class="method__scroll-to text-button" :to="{ name: method.key }"
       >Перейти к расчету</RouterLink
     >
@@ -16,16 +10,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Method } from '@/types';
+import type { MethodWithActivity } from '@/types';
 
 defineProps<{
-  method: Method;
+  method: MethodWithActivity;
 }>();
 
-const isCollapsed = ref(true);
-
-const toggle = () => (isCollapsed.value = !isCollapsed.value);
+defineEmits<{
+  (e: 'openModal', data: string[]): void;
+}>();
 </script>
 
 <style lang="sass">
@@ -39,7 +32,6 @@ const toggle = () => (isCollapsed.value = !isCollapsed.value);
 
   &.active
     grid-column: -1 / 1
-    order: -1
     padding: 16px
     background-color: $light-opacity-s
 
@@ -52,22 +44,13 @@ const toggle = () => (isCollapsed.value = !isCollapsed.value);
     font-size: 1.25rem
     line-height: 140%
 
-  &__toggle
+  &__details
     +transition
+
     color: $light-opacity-l
 
     &:hover
       color: $light-color
-
-    &--expand
-      border-bottom: 1px dashed $light-opacity-l
-
-      &:hover
-        border-color: $light-color
-
-    &--collapse
-      &:hover
-        color: $primary-color
 
   &__scroll-to
     color: $primary-color
