@@ -1,13 +1,41 @@
+*, *::before, *::after
+  box-sizing: border-box
+
 html
   font-size: 16px
   font-family: 'Roboto', sans-serif
   color: $light-color
   font-weight: 400
+  background-color: $dark-color
+  scroll-behavior: smooth
+
+.title
+  font-weight: 700
+  font-size: 2.5rem
+  line-height: 120%
+  margin-bottom: 36px
 
 button
   +transition
   cursor: pointer
+  background-color: transparent
 
 .container
   max-width: 1200px
   margin: 0 auto
+
+  @media ( max-width:  640px)
+    max-width: 600px
+
+.text-button
+  font-size: 1rem
+  line-height: 140%
+
+svg
+  +transition
+
+  width: 100%
+  height: 100%
+
+.noscroll
+  overflow: hidden

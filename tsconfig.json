@@ -1,14 +1,27 @@
 {
-  "files": [],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "e2e"
+  ],
+  "compilerOptions": {
+    "target": "es5",
+    "downlevelIteration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "lib": [
+      "ES2019",
+      "DOM"
+    ],
+  },
   "references": [
     {
-      "path": "./tsconfig.node.json"
+      "path": "./tsconfig.config.json"
     },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
   ]
 }
