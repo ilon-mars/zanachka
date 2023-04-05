@@ -1,4 +1,4 @@
-export interface Method {
+export interface MethodDescription {
   key: string;
   name: string;
   description: string;
@@ -7,6 +7,6 @@ export interface Method {
   note?: string;
 }
 
-export interface MethodWithActivity extends Method {
+export interface MethodWithActivity extends MethodDescription {
   isActive: boolean;
 }

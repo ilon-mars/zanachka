@@ -4,3 +4,5 @@ export const kebabToPascalCase = (string: string): string => {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 };
+
+export const generateId = (prefix: string = ''): string => `${prefix && `${prefix}-`}${Date.now()}`;

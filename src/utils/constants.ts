@@ -1,7 +1,7 @@
 import { MethodEnum } from '@/enums';
-import type { Method } from '@/types';
+import type { MethodDescription } from '@/types';
 
-export const methods: Method[] = [
+export const methods: MethodDescription[] = [
   {
     key: MethodEnum.CLASSIC,
     name: 'Классический метод конвертов',
