@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="`btn--${theme}`" @click="$emit('click')">
+  <button class="button" :class="`button--${theme}`" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -21,7 +21,7 @@ defineEmits<{
 </script>
 
 <style lang="sass">
-.btn
+.button
   font-weight: 700
   font-size: 1rem
   line-height: 1.25rem
