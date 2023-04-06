@@ -2,8 +2,6 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { ClassicEnvelopeMethod } from '@/types';
 import { generateId } from '@/utils/functions';
-import { MethodEnum } from '@/enums';
-import { useLocalStorage } from '@/hooks';
 
 export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
   const DEFAULT_LABEL = 'Кликните, чтобы назвать конверт';
@@ -28,12 +26,6 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
 
     return +income.value - expenses;
   });
-
-  // const { get, set, remove } = useLocalStorage(MethodEnum.CLASSIC, {
-  //   ...envelopeList.value,
-  //   income: income.value,
-  //   moneyLeft: moneyLeft.value,
-  // });
 
   const addEnvelope = () => {
     envelopeList.value.push({ ...EMPTY_METHOD, id: generateId('field') });
