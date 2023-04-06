@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Method } from '@/types';
+import type { MethodDescription } from '@/types';
 
 defineProps<{
-  methodSteps: Method['steps'];
+  methodSteps: MethodDescription['steps'];
 }>();
 </script>
 

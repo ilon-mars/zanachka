@@ -3,7 +3,7 @@
     <Transition name="fade">
       <div v-if="props.isOpen" class="overlay" @click.self="emit('close')">
         <div class="modal">
-          <button @click="emit('close')" class="modal__close-button">
+          <button class="modal__close-button" @click="emit('close')">
             <CloseIcon />
           </button>
 

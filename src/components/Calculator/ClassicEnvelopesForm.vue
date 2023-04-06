@@ -1,21 +1,21 @@
 <template>
   <form :id="MethodEnum.CLASSIC" class="calculator-form">
     <BaseField
-      v-model:input-value="income"
       id="income"
+      v-model:input-value="income"
       placeholder="80 000"
       label="Введите доход после вычета налогов"
-      class="calculator-form__field--first"
+      class="calculator-form__field--income"
     />
 
-    <ul class="calculator-form__input-list" v-if="envelopeList.length">
+    <ul v-if="envelopeList.length" class="calculator-form__input-list">
       <li v-for="envelope in envelopeList" :key="envelope.id" class="calculator-form__field">
         <BaseField
           :id="envelope.id"
-          :placeholder="envelope.placeholder"
-          :label="envelope.label"
           v-model:input-value="envelope.input"
           v-model:label-value="envelope.label"
+          :placeholder="envelope.placeholder"
+          :label="envelope.label"
           is-label-editable
         >
           <template #right>
@@ -27,7 +27,7 @@
       </li>
     </ul>
 
-    <AddFieldButton @click="addEnvelope" class="calculator-form__add-button" />
+    <AddFieldButton class="calculator-form__add-button" @click="addEnvelope" />
 
     <span class="calculator-form__left"
       ><span>{{ moneyLeft >= 0 ? 'Осталось свободно' : 'Долг' }}:&nbsp;</span>{{ moneyLeft }}</span

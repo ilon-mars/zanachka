@@ -1,21 +1,28 @@
 <template>
   <div class="field">
     <input
-      type="text"
       v-if="isEditMode"
       v-model="editedLabel"
-      @blur="isEditMode = false"
+      type="text"
       class="field__label-input"
+      @blur="isEditMode = false"
     />
-    <label :for="id" class="field__label" @click="editLabel" v-else>{{ label }}</label>
+    <label
+      v-else
+      :for="id"
+      class="field__label"
+      :class="{ 'field__label--editable': isLabelEditable }"
+      @click="editLabel"
+      >{{ label }}</label
+    >
 
     <div class="field__input-wrapper">
       <slot name="left" />
       <input
         :id="id"
+        v-model="input"
         type="text"
         :readonly="isReadonly"
-        v-model="input"
         :placeholder="placeholder"
         class="field__input"
       />
@@ -40,6 +47,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   isReadonly: false,
   isLabelEditable: false,
+  labelValue: '',
 });
 
 const emit = defineEmits<{
@@ -78,6 +86,9 @@ const editedLabel = computed({
     font-size: 1rem
     line-height: 1.25rem
     margin-bottom: 12px
+
+    &--editable
+      color: $light-opacity-m
 
   &__label-input
     background-color: transparent

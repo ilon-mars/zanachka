@@ -1,5 +1,5 @@
 <template>
-  <li class="method" :class="{ active: method.isActive }" v-if="method.key">
+  <li v-if="method.key" class="method" :class="{ active: method.isActive }">
     <h3 class="method__name">{{ method.name }}</h3>
     <p class="method__description">{{ method.description }}</p>
     <button class="method__details text-button" @click="$emit('openModal', method.steps)">Подробнее</button>
