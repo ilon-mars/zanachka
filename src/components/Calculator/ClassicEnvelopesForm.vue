@@ -56,10 +56,6 @@ const { addEnvelope, deleteEnvelope, save, clear } = store;
 
 <style lang="sass">
 .calculator-form
-  &__field
-    &--first
-      margin-bottom: 28px
-
   &__delete-icon
     transform: rotate(45deg)
     width: 40px
