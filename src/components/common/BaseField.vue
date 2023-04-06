@@ -21,6 +21,7 @@
       <input
         :id="id"
         v-model="input"
+        v-mask
         type="text"
         :readonly="isReadonly"
         :placeholder="placeholder"
@@ -33,6 +34,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { wearMask, removeMask } from '@/utils/functions';
 
 interface Props {
   inputValue: string;
@@ -55,12 +57,19 @@ const emit = defineEmits<{
   (e: 'update:labelValue', value: string): void;
 }>();
 
+/* input */
 const input = computed({
   get: () => props.inputValue,
   set: value => emit('update:inputValue', value),
 });
 
+/* label */
 const isEditMode = ref<boolean>(false);
+
+const editedLabel = computed({
+  get: () => props.labelValue,
+  set: value => emit('update:labelValue', value),
+});
 
 const editLabel = () => {
   if (!props.isLabelEditable) {
@@ -70,10 +79,16 @@ const editLabel = () => {
   isEditMode.value = true;
 };
 
-const editedLabel = computed({
-  get: () => props.labelValue,
-  set: value => emit('update:labelValue', value),
-});
+/* mask */
+const vMask = {
+  beforeMount: (el: HTMLInputElement) => {
+    el.value = wearMask(el.value);
+  },
+  updated: (el: HTMLInputElement) => {
+    let unformatted = removeMask(el.value);
+    el.value = wearMask(unformatted);
+  },
+};
 </script>
 
 <style lang="sass">

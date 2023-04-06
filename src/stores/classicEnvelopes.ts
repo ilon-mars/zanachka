@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { ClassicEnvelopeMethod } from '@/types';
-import { generateId } from '@/utils/functions';
+import { generateId, removeMask } from '@/utils/functions';
 
 export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
   const DEFAULT_LABEL = 'Кликните, чтобы назвать конверт';
@@ -20,11 +20,11 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
 
   const moneyLeft = computed(() => {
     const expenses = envelopeList.value.reduce((acc, item) => {
-      acc += +item.input;
+      acc += +removeMask(item.input);
       return acc;
     }, 0);
 
-    return +income.value - expenses;
+    return +removeMask(income.value) - expenses;
   });
 
   const addEnvelope = () => {
