@@ -1,8 +1,10 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { ClassicEnvelopeField } from '@/types';
+import { ClassicEnvelopeField, Outcome } from '@/types';
 import { generateId, removeMask } from '@/utils/functions';
 import { ClassicEnvelopeModel } from '@/models/Method';
+import { useLocalStorage } from '@/hooks';
+import { MethodEnum } from '@/enums';
 
 export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
   const DEFAULT_LABEL = 'Кликните, чтобы назвать конверт';
@@ -12,12 +14,25 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
     id: '',
     placeholder: DEFAULT_PLACEHOLDER,
     envelopeName: DEFAULT_LABEL,
-    envelopeAmount: '',
+    envelopeAmount: 0,
   };
 
-  const envelopeList = ref<ClassicEnvelopeField[]>([]);
+  const { get, set, remove } = useLocalStorage(MethodEnum.CLASSIC);
 
-  const income = ref<string>('');
+  /* init localStorage */
+  const localData: ClassicEnvelopeModel = get();
+  const envelopeFields: ClassicEnvelopeField[] = localData?.outcomes
+    ? localData.outcomes.map((item, index) => ({
+        id: generateId(`field${index}-`),
+        placeholder: item.amount.toString(),
+        envelopeName: item.name,
+        envelopeAmount: item.amount,
+      }))
+    : [];
+
+  /* component logic */
+  const income = ref<string>(localData?.income.toString() || '');
+  const envelopeList = ref<ClassicEnvelopeField[]>([...envelopeFields]);
 
   const moneyLeft = computed(() => {
     const expenses = envelopeList.value.reduce((acc, item) => {
@@ -37,13 +52,22 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
   };
 
   const save = () => {
-    // set();
+    if (!income.value || !envelopeList.value.length) return;
+
+    const formattedOutcomes: Outcome[] = envelopeList.value.map(item => ({
+      name: item.envelopeName,
+      amount: item.envelopeAmount,
+    }));
+    const budget = new ClassicEnvelopeModel(income.value, formattedOutcomes);
+
+    set(budget);
   };
 
   const clear = () => {
-    envelopeList.value = [];
     income.value = '';
-    // remove();
+    envelopeList.value = [];
+
+    remove();
   };
 
   return {

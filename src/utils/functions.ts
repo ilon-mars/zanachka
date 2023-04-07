@@ -10,6 +10,8 @@ export const kebabToPascalCase = (string: string): string => {
 
 export const generateId = (prefix: string = ''): string => `${prefix && `${prefix}-`}${Date.now()}`;
 
-export const wearMask = (rawValue: string) => separateByThousands(rawValue, ' ');
+export const wearMask = (rawValue: string | number) =>
+  separateByThousands(rawValue.toString(), ' ');
 
-export const removeMask = (formattedValue: string) => formattedValue.replace(/\D+/g, '');
+export const removeMask = (formattedValue: string | number) =>
+  formattedValue.toString().replace(/\D+/g, '');

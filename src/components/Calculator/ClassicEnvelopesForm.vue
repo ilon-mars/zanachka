@@ -29,8 +29,9 @@
 
     <AddFieldButton class="calculator-form__add-button" @click="addEnvelope" />
 
-    <span class="calculator-form__left"
-      ><span>{{ moneyLeft >= 0 ? 'Осталось свободно' : 'Долг' }}:&nbsp;</span>{{ moneyLeft }}</span
+    <span class="calculator-form__left" :class="{ 'calculator-form__left--warning': moneyLeft < 0 }"
+      ><span>{{ moneyLeft >= 0 ? 'Осталось свободно' : 'Долг' }}:&nbsp;</span
+      >{{ wearMask(moneyLeft) }}</span
     >
 
     <div class="calculator-form__buttons">
@@ -48,6 +49,7 @@ import CrossIcon from '@/components/icons/CrossIcon.vue';
 import { ButtonThemeEnum, MethodEnum } from '@/enums';
 import { useClassicEnvelopesStore } from '@/stores';
 import { storeToRefs } from 'pinia';
+import { wearMask } from '@/utils/functions';
 
 const store = useClassicEnvelopesStore();
 const { envelopeList, income, moneyLeft } = storeToRefs(store);
@@ -64,4 +66,7 @@ const { addEnvelope, deleteEnvelope, save, clear } = store;
   &__left
     display: flex
     margin-bottom: 28px
+
+    &--warning
+      color: $warning-color
 </style>

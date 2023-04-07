@@ -37,7 +37,7 @@ import { computed, ref } from 'vue';
 import { wearMask, removeMask } from '@/utils/functions';
 
 interface Props {
-  inputValue: string;
+  inputValue: string | number;
   id: string;
   label: string;
   placeholder: string;
@@ -53,14 +53,14 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:inputValue', value: string): void;
+  (e: 'update:inputValue', value: string | number): void;
   (e: 'update:labelValue', value: string): void;
 }>();
 
 /* input */
 const input = computed({
   get: () => props.inputValue,
-  set: value => emit('update:inputValue', value),
+  set: value => emit('update:inputValue', +value),
 });
 
 /* label */

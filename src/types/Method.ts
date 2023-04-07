@@ -17,10 +17,10 @@ export interface ClassicEnvelopeField extends MethodField {
   id: string;
   placeholder: string;
   envelopeName: string;
-  envelopeAmount: string;
+  envelopeAmount: number;
 }
 
 export type Outcome = {
   name: string;
-  amount: string;
+  amount: number;
 }
