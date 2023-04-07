@@ -1,20 +1,22 @@
 <template>
   <div class="field">
-    <input
-      v-if="isEditMode"
-      v-model="editedLabel"
-      type="text"
-      class="field__label-input"
-      @blur="isEditMode = false"
-    />
-    <label
-      v-else
-      :for="id"
-      class="field__label"
-      :class="{ 'field__label--editable': isLabelEditable }"
-      @click="editLabel"
-      >{{ label }}</label
-    >
+    <Transition name="fade" mode="out-in">
+      <input
+        v-if="isEditMode"
+        v-model="editedLabel"
+        type="text"
+        class="field__label-input"
+        @blur="isEditMode = false"
+      />
+      <label
+        v-else
+        :for="id"
+        class="field__label"
+        :class="{ 'field__label--editable': isLabelEditable }"
+        @click="editLabel"
+        >{{ label }}</label
+      >
+    </Transition>
 
     <div class="field__input-wrapper">
       <slot name="left" />
@@ -103,17 +105,18 @@ const vMask = {
     margin-bottom: 12px
 
     &--editable
-      color: $light-opacity-m
+      animation: blink 10s infinite both
+      border-left: 2px solid transparent
 
   &__label-input
     background-color: transparent
-    border: 1px solid $active-color
-    color: $active-color
+    border-left: 2px solid $active-color
+    color: $light-opacity-l
     margin-bottom: 12px
+    padding-left: 8px
 
     &:focus
       outline: none
-      border: 1px solid $success-color
 
   &__input-wrapper
     display: flex
