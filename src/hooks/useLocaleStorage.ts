@@ -1,4 +1,4 @@
-export function useLocalStorage(key: string, item: unknown) {
+export function useLocalStorage(key: string) {
   const get = () => {
     if (localStorage.getItem(key) !== undefined) {
       const item = localStorage.getItem(key);
@@ -7,7 +7,7 @@ export function useLocalStorage(key: string, item: unknown) {
     }
   };
 
-  const set = () => {
+  const set = (item: unknown) => {
     localStorage.setItem(key, JSON.stringify(item));
   };
 

@@ -79,3 +79,7 @@ export const methods: MethodDescription[] = [
   //   ],
   // },
 ];
+
+export const JARS_PERCENTS = [55, 10, 10, 10, 10, 5];
+export const MICROSOFT_PERCENTS = [60, 10, 10, 10, 10];
+export const EASY_PERCENTS = [50, 30, 20];

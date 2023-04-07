@@ -21,10 +21,10 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import MethodCard from '@/components/Methods/MethodCard.vue';
-import { methods as rawMethods } from '@/utils/constants';
-import type { MethodDescription, MethodWithActivity } from '@/types';
 import AppModal from '@/components/AppModal.vue';
-import MethodDetailsModal from './Methods/MethodDetailsModal.vue';
+import MethodDetailsModal from '@/components/Methods/MethodDetailsModal.vue';
+import type { MethodDescription, MethodWithActivity } from '@/types';
+import { methods as rawMethods } from '@/utils/constants';
 
 const methods = reactive<Record<string, MethodWithActivity>>(
   rawMethods.reduce((acc, method, index) => {

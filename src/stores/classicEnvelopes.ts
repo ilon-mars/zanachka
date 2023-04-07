@@ -1,26 +1,27 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { ClassicEnvelopeMethod } from '@/types';
+import { ClassicEnvelopeField } from '@/types';
 import { generateId, removeMask } from '@/utils/functions';
+import { ClassicEnvelopeModel } from '@/models/Method';
 
 export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
   const DEFAULT_LABEL = 'Кликните, чтобы назвать конверт';
   const DEFAULT_PLACEHOLDER = '1000';
 
-  const EMPTY_METHOD: ClassicEnvelopeMethod = {
+  const EMPTY_METHOD: ClassicEnvelopeField = {
     id: '',
     placeholder: DEFAULT_PLACEHOLDER,
-    label: DEFAULT_LABEL,
-    input: '',
+    envelopeName: DEFAULT_LABEL,
+    envelopeAmount: '',
   };
 
-  const envelopeList = ref<ClassicEnvelopeMethod[]>([]);
+  const envelopeList = ref<ClassicEnvelopeField[]>([]);
 
   const income = ref<string>('');
 
   const moneyLeft = computed(() => {
     const expenses = envelopeList.value.reduce((acc, item) => {
-      acc += +removeMask(item.input);
+      acc += +removeMask(item.envelopeAmount);
       return acc;
     }, 0);
 

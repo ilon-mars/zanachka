@@ -12,10 +12,10 @@
       <li v-for="envelope in envelopeList" :key="envelope.id" class="calculator-form__field">
         <BaseField
           :id="envelope.id"
-          v-model:input-value="envelope.input"
-          v-model:label-value="envelope.label"
+          v-model:input-value="envelope.envelopeAmount"
+          v-model:label-value="envelope.envelopeName"
           :placeholder="envelope.placeholder"
-          :label="envelope.label"
+          :label="envelope.envelopeName"
           is-label-editable
         >
           <template #right>

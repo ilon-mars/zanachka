@@ -1,2 +1,1 @@
-export * from './MethodDescription';
-export * from './MethodField';
+export * from './Method';
