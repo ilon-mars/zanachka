@@ -20,6 +20,8 @@ export class ClassicEnvelopeModel extends MethodModel {
 }
 
 export class FixedEnvelopesModel extends MethodModel {
+  outcomes: Outcome[];
+
   constructor(income: string) {
     super(income);
   }
