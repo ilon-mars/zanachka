@@ -62,7 +62,13 @@ const emit = defineEmits<{
 /* input */
 const input = computed({
   get: () => props.inputValue,
-  set: value => emit('update:inputValue', +value),
+  set: value => {
+    if (typeof value === 'string') {
+      emit('update:inputValue', parseFloat(removeMask(value)));
+    } else {
+      emit('update:inputValue', value);
+    }
+  },
 });
 
 /* label */
