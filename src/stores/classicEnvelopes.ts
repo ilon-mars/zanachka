@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { ClassicEnvelopeField, Outcome } from '@/types';
 import { generateId, removeMask } from '@/utils/functions';
 import { ClassicEnvelopeModel } from '@/models/Method';
-import { useLocalStorage } from '@/hooks';
+import { getFromLS, saveToLS, removeFromLS } from '@/services';
 import { MethodEnum } from '@/enums';
 
 export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
@@ -17,10 +17,8 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
     envelopeAmount: 0,
   };
 
-  const { get, set, remove } = useLocalStorage(MethodEnum.CLASSIC);
-
   /* init localStorage */
-  const localData: ClassicEnvelopeModel = get();
+  const localData: ClassicEnvelopeModel = getFromLS(MethodEnum.CLASSIC);
   const envelopeFields: ClassicEnvelopeField[] = localData?.outcomes
     ? localData.outcomes.map((item, index) => ({
         id: generateId(`field${index}-`),
@@ -60,14 +58,14 @@ export const useClassicEnvelopesStore = defineStore('classicEnvelopes', () => {
     }));
     const budget = new ClassicEnvelopeModel(income.value, formattedOutcomes);
 
-    set(budget);
+    saveToLS(MethodEnum.CLASSIC, budget);
   };
 
   const clear = () => {
     income.value = '';
     envelopeList.value = [];
 
-    remove();
+    removeFromLS(MethodEnum.CLASSIC);
   };
 
   return {
