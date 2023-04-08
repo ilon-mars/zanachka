@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { generateId } from '@/utils/functions';
+import { generateId, wearMask } from '@/utils/functions';
 import { FixedEnvelopesModel } from '@/models/Method';
 import { getFromLS, saveToLS, removeFromLS } from '@/services';
 import { MethodEnum } from '@/enums';
@@ -13,13 +13,11 @@ export const useJarsStore = defineStore('jars', () => {
   /* component logic */
   const income = ref<string>(localData?.income.toString() || '');
   const jarsList = computed(() =>
-    JARS_PERCENTS.map((percent, index) => {
-      return {
-        id: generateId(`field${index}-`),
-        name: `${percent}%`,
-        amount: Math.floor((+income.value / 100) * percent),
-      };
-    })
+    JARS_PERCENTS.map((percent, index) => ({
+      id: generateId(`field${index}-`),
+      name: `${percent}%`,
+      amount: wearMask(Math.floor((+income.value / 100) * percent)),
+    }))
   );
 
   const save = () => {
