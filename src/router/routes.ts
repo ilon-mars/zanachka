@@ -11,6 +11,7 @@ MethodEnum.values.map(method => {
     name: method,
     path: `/${method}`,
     component,
+    // for anchor scrolling
     meta: {
       scrollable: true,
     },
