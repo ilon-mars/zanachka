@@ -140,17 +140,18 @@ const vMask = {
     line-height: 1.5rem
     background-color: transparent
 
-    &:focus
+    &:not(:read-only):focus
       color: $light-color
       border-color: transparent
       outline: 2px solid $active-color
 
-    &:not(:focus):hover
+    &:not(:focus, :read-only):hover
       border-color: $light-color
 
     &:read-only
       background-color: $light-opacity-s
       border-color: $light-opacity-m
+      pointer-events: none
 
     &:invalid
       color: $warning-color
