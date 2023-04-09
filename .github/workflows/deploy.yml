@@ -3,8 +3,8 @@ name: Deploy on push & pull request
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ['main']
+  # push:
+    # branches: ['main']
   pull_request:
     types: [closed]
     branches: ['main']
