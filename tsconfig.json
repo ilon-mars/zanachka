@@ -6,7 +6,10 @@
     "e2e"
   ],
   "compilerOptions": {
-    "target": "es5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "es2020",
+    "esModuleInterop": true,
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
@@ -15,7 +18,7 @@
       ]
     },
     "lib": [
-      "ES2019",
+      "ES2022",
       "DOM"
     ],
   },
