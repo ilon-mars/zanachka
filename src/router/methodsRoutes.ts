@@ -4,7 +4,7 @@ import { kebabToPascalCase } from '@/utils/functions';
 
 const methodsRoutes: RouteRecordRaw[] = [];
 
-MethodEnum.values.map(method => {
+MethodEnum.notFixed.map(method => {
   const component = () => import(`@/components/Calculator/${kebabToPascalCase(method)}Form.vue`);
 
   const route: RouteRecordRaw = {
@@ -12,6 +12,7 @@ MethodEnum.values.map(method => {
     path: `/${method}`,
     component,
     meta: {
+      // for anchor scrolling
       scrollable: true,
     },
   };

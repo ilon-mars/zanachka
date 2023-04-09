@@ -1,2 +1,4 @@
-@mixin transition($duration: $transition-duration)
-  transition: all ease-in $duration
+@mixin transition($transition: all, $duration: $transition-duration)
+  transition-property: $transition
+  transition-duration: $duration
+  transition-timing-function: ease-in
