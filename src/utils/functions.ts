@@ -1,3 +1,5 @@
+import { MethodEnum } from '@/enums';
+
 const separateByThousands = (rawString: string, delimeter: string) =>
   rawString.replace(/\B(?=(\d{3})+(?!\d))/g, `${delimeter}`);
 
@@ -15,3 +17,5 @@ export const wearMask = (rawValue: string | number) =>
 
 export const removeMask = (formattedValue: string | number) =>
   formattedValue.toString().replace(/\D+/g, '');
+
+export const getKeyFromPath = (path: string): MethodEnum => path.slice(1) as MethodEnum;

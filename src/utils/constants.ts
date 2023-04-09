@@ -1,5 +1,5 @@
 import { MethodEnum } from '@/enums';
-import type { MethodDescription } from '@/types';
+import type { FixedPercent, MethodDescription, MethodsPercents } from '@/types';
 
 export const methods: MethodDescription[] = [
   {
@@ -80,6 +80,12 @@ export const methods: MethodDescription[] = [
   },
 ];
 
-export const JARS_PERCENTS = [55, 10, 10, 10, 10, 5];
-export const MICROSOFT_PERCENTS = [60, 10, 10, 10, 10];
-export const EASY_PERCENTS = [50, 30, 20];
+export const JARS_PERCENTS: FixedPercent = [55, 10, 10, 10, 10, 5];
+export const MICROSOFT_PERCENTS: FixedPercent = [60, 10, 10, 10, 10];
+export const EASY_PERCENTS: FixedPercent = [50, 30, 20];
+
+export const methodsPercents: MethodsPercents = {
+  [MethodEnum.EASY]: EASY_PERCENTS,
+  [MethodEnum.JARS]: JARS_PERCENTS,
+  [MethodEnum.MICROSOFT]: MICROSOFT_PERCENTS,
+};

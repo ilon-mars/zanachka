@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import methodsRoutes from './routes';
+import methodsRoutes from './methodsRoutes';
+import { getKeyFromPath } from '@/utils/functions';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -9,12 +10,22 @@ const router = createRouter({
       name: 'default',
       component: () => import('@/components/EmptyComponent.vue'),
     },
+    {
+      path: '/fixed/:key',
+      name: 'fixed',
+      component: () => import('@/components/Calculator/FixedPercentForm.vue'),
+      meta: {
+        // for anchor scrolling
+        scrollable: true,
+      },
+      alias: ['/:key'],
+    },
     ...methodsRoutes,
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.meta.scrollable) {
       return {
-        el: `#${String(to.name)}`,
+        el: `#${getKeyFromPath(to.path)}`,
         behavior: 'smooth',
       };
     } else {

@@ -1,5 +1,8 @@
+import { FixedMethodEnum, MethodEnum } from '@/enums';
+import { ComputedRef } from 'vue';
+
 export interface MethodDescription {
-  key: string;
+  key: MethodEnum;
   name: string;
   description: string;
   steps: string[];
@@ -23,4 +26,22 @@ export interface ClassicEnvelopeField extends MethodField {
 export type Outcome = {
   name: string;
   amount: number;
-}
+};
+
+export type FixedPercent = number[];
+
+export type MethodsPercents = Record<FixedMethodEnum, FixedPercent>;
+
+export type FixedPercentField = Record<
+  FixedMethodEnum,
+  {
+    value: string;
+    fieldsList: ComputedRef<
+      {
+        id: string;
+        name: string;
+        amount: string;
+      }[]
+    >;
+  }
+>;

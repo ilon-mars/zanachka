@@ -2,8 +2,10 @@
   <li v-if="method.key" class="method" :class="{ active: method.isActive }">
     <h3 class="method__name">{{ method.name }}</h3>
     <p class="method__description">{{ method.description }}</p>
-    <button class="method__details text-button" @click="$emit('openModal', method.steps)">Подробнее</button>
-    <RouterLink class="method__scroll-to text-button" :to="{ name: method.key }"
+    <button class="method__details text-button" @click="$emit('openModal', method.steps)">
+      Подробнее
+    </button>
+    <RouterLink class="method__scroll-to text-button" :to="{ path: `/${method.key}` }"
       >Перейти к расчету</RouterLink
     >
   </li>
