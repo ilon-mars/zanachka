@@ -7,4 +7,10 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<style lang="sass">
+.calculator
+  margin-bottom: 120px
+
+  @media (max-width: 640px)
+    margin: 60px 0
+</style>
