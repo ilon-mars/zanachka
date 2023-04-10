@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'default',
-      component: () => import('@/components/EmptyComponent.vue'),
+      component: () => import('@/components/Calculator/StartDescription.vue'),
     },
     {
       path: '/fixed/:key',
