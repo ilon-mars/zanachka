@@ -1,6 +1,6 @@
 <template>
   <ul class="details">
-    <li v-for="(step, index) in methodSteps" :key="index" class="details__step">
+    <li v-for="(step, index) in methodSteps" :key="index" class="details__step text">
       {{ step }}
     </li>
   </ul>
@@ -23,7 +23,6 @@ defineProps<{
 
   &__step
     position: relative
-    line-height: 140%
     padding-left: 20px
 
     &::before

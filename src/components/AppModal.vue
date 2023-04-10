@@ -7,7 +7,7 @@
             <CloseIcon />
           </button>
 
-          <slot class="modal__content" />
+          <slot />
         </div>
       </div>
     </Transition>
