@@ -1,8 +1,8 @@
 <template>
-  <form :id="(route.params.key as string)" class="calculator-form">
+  <form :id="(route.meta.key as string)" class="calculator-form">
     <BaseField
       id="income"
-      v-model:input-value="incomes[route.params.key as string].value"
+      v-model:input-value="incomes[route.meta.key as string].value"
       placeholder="80 000"
       label="Введите доход после вычета налогов"
       class="calculator-form__field--income"
@@ -10,7 +10,7 @@
 
     <ul class="calculator-form__input-list">
       <li
-        v-for="field in incomes[route.params.key as string].fieldsList"
+        v-for="field in incomes[route.meta.key as string].fieldsList"
         :key="field.id"
         class="calculator-form__field"
       >
@@ -28,12 +28,12 @@
     <div class="calculator-form__buttons">
       <BaseButton
         :theme="ButtonThemeEnum.PRIMARY"
-        @click="save(route.params.key as string as FixedMethodEnum)"
+        @click="save(route.meta.key as string as FixedMethodEnum)"
         >Сохранить</BaseButton
       >
       <BaseButton
         :theme="ButtonThemeEnum.SECONDARY"
-        @click="clear(route.params.key as string as FixedMethodEnum)"
+        @click="clear(route.meta.key as string as FixedMethodEnum)"
         >Очистить</BaseButton
       >
     </div>
@@ -51,8 +51,4 @@ const route = useRoute();
 
 const store = useFixedPercentStore();
 const { incomes, save, clear } = store;
-
-console.log('store', store);
-console.log('incomes', incomes);
-console.log('route', route);
 </script>
