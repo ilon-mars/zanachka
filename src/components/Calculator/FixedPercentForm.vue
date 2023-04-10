@@ -51,4 +51,8 @@ const route = useRoute();
 
 const store = useFixedPercentStore();
 const { incomes, save, clear } = store;
+
+console.log('store', store);
+console.log('incomes', incomes);
+console.log('route', route);
 </script>
