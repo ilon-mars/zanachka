@@ -23,4 +23,9 @@ const year = new Date().getFullYear()
     align-items: center
     justify-content: space-between
     color: $light-opacity-m
+
+    @media (max-width:  640px)
+      flex-direction: column
+      align-items: flex-start
+      gap: 24px
 </style>
