@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import methodsRoutes from './methodsRoutes';
 import { getKeyFromPath } from '@/utils/functions';
+import { MethodEnum } from '@/enums';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/zanachka/'),
   routes: [
     {
       path: '/',
@@ -34,10 +35,13 @@ const router = createRouter({
   },
 });
 
-router.beforeEach((to, from, next) => {
-  console.log(to);
+// // for error
+// router.beforeEach((to, from, next) => {
+//   if (MethodEnum.fixed.includes[to.params.key as string]) {
+//     to.meta.key = to.params.key;
+//   }
 
-  next();
-});
+//   next();
+// });
 
 export default router;
