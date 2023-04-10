@@ -50,4 +50,7 @@ defineEmits<{
   &--secondary
     color: $light-color
     border: 1px solid $primary-color
+
+  @media (max-width: 640px)
+    width: 100%
 </style>
