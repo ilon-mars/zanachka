@@ -1,4 +1,4 @@
-import { Outcome } from '@/types';
+import type { Outcome } from '@/types';
 
 class MethodModel {
   income: number;
@@ -10,7 +10,6 @@ class MethodModel {
 
 export class ClassicEnvelopeModel extends MethodModel {
   outcomes: Outcome[];
-  moneyLeft: number;
 
   constructor(income: string, outcomes: Outcome[]) {
     super(income);
@@ -20,8 +19,6 @@ export class ClassicEnvelopeModel extends MethodModel {
 }
 
 export class FixedEnvelopesModel extends MethodModel {
-  outcomes: Outcome[];
-
   constructor(income: string) {
     super(income);
   }

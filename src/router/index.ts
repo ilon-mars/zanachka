@@ -1,15 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import methodsRoutes from './methodsRoutes';
+import StartDescription from '@/components/Calculator/StartDescription.vue';
 import { getKeyFromPath } from '@/utils/functions';
 
 const router = createRouter({
   // base for github
-  history: createWebHistory('/zanachka/'),
+  history: createWebHistory(import.meta.env.BASE_URL),
+
   routes: [
     {
       path: '/',
       name: 'default',
-      component: () => import('@/components/Calculator/StartDescription.vue'),
+      component: StartDescription,
     },
     {
       path: '/fixed/:key',
@@ -23,6 +25,7 @@ const router = createRouter({
     },
     ...methodsRoutes,
   ],
+
   scrollBehavior(to, from, savedPosition) {
     if (to.meta.scrollable) {
       return {

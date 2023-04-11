@@ -3,9 +3,9 @@ import { defineStore } from 'pinia';
 import { generateId, wearMask } from '@/utils/functions';
 import { FixedEnvelopesModel } from '@/models/Method';
 import { getFromLS, saveToLS, removeFromLS } from '@/services';
-import { FixedMethodEnum } from '@/enums';
+import type { FixedMethodEnum } from '@/enums';
 import { methodsPercents } from '@/utils/constants';
-import { FixedPercent, FixedPercentField } from '@/types';
+import type { FixedPercent, FixedPercentField } from '@/types';
 
 const createIncome = (key: FixedMethodEnum, percents: FixedPercent) => {
   const income = reactive({

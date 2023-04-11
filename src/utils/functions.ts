@@ -1,4 +1,4 @@
-import { MethodEnum } from '@/enums';
+import type { MethodEnum } from '@/enums';
 
 const separateByThousands = (rawString: string, delimeter: string) =>
   rawString.replace(/\B(?=(\d{3})+(?!\d))/g, `${delimeter}`);

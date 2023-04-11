@@ -2,7 +2,7 @@ export const getFromLS = (key: string) => {
   if (localStorage.getItem(key) !== undefined) {
     const item = localStorage.getItem(key);
 
-    return JSON.parse(item);
+    return JSON.parse(item as string);
   }
 };
 

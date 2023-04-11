@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import { ClassicEnvelopeField, Outcome } from '@/types';
+import type { ClassicEnvelopeField, Outcome } from '@/types';
 import { generateId, removeMask } from '@/utils/functions';
 import { ClassicEnvelopeModel } from '@/models/Method';
 import { getFromLS, saveToLS, removeFromLS } from '@/services';
