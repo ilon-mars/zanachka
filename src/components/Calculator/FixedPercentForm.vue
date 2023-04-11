@@ -45,7 +45,7 @@ import { useRoute } from 'vue-router';
 import BaseField from '@/components/common/BaseField.vue';
 import BaseButton from '@/components/common/BaseButton.vue';
 import { useFixedPercentStore } from '@/stores';
-import { ButtonThemeEnum, FixedMethodEnum } from '@/enums';
+import { ButtonThemeEnum, type FixedMethodEnum } from '@/enums';
 
 const route = useRoute();
 

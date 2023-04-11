@@ -1,5 +1,5 @@
-import { FixedMethodEnum, MethodEnum } from '@/enums';
-import { ComputedRef } from 'vue';
+import type { ComputedRef } from 'vue';
+import type { FixedMethodEnum, MethodEnum } from '@/enums';
 
 export interface MethodDescription {
   key: MethodEnum;
