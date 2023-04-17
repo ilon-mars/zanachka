@@ -53,25 +53,33 @@ watch(
   align-items: center
   justify-content: center
   backdrop-filter: blur(10px)
+  padding: $ui-step * 5
+
+  +breakpoint('sm')
+    padding: 0
 
   .modal
     position: relative
     max-width: 800px
     min-height: 400px
-    padding: 20px 40px 20px 20px
+    padding: $ui-step * 10
     background-color: $dark-background
     display: flex
 
-    @media(max-width: 640px)
+    +breakpoint('sm')
       width: calc(100% - $env-verlical-space)
       height: calc(100vh - $env-horizontal-space)
 
     &__close-button
       position: absolute
-      top: 20px
-      right: 20px
-      width: 20px
-      height: 20px
+      top: -($ui-step * 10)
+      right: 0
+      width: rem($ui-step * 5)
+      height: rem($ui-step * 5)
       cursor: pointer
       color: $light-color
+
+      +breakpoint('sm')
+        top: $ui-step * 5
+        right: $ui-step * 5
 </style>
