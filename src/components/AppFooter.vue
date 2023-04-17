@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
 <style lang="sass">
 .footer
   background-color: $light-opacity-s
-  padding: 32px 0
+  padding: $ui-step * 8 0
 
   &__copyright
     display: flex
@@ -25,9 +25,9 @@ const year = new Date().getFullYear()
     color: $light-opacity-m
 
     +breakpoint('sm')
+      +ui-space(gap, 6)
       flex-direction: column
       align-items: flex-start
-      gap: 24px
 
   .caption
     &--about

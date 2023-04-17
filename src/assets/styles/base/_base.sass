@@ -10,30 +10,26 @@ html
   scroll-behavior: smooth
 
 .title
+  +ui-space(bottom, 9)
   font-weight: 700
-  font-size: 2.5rem
+  font-size: rem($ui-step * 10)
   line-height: 120%
-  margin-bottom: 36px
 
 button
   +transition
-
   cursor: pointer
   background-color: transparent
 
 .container
-  max-width: 1200px
+  +container
   margin: 0 auto
 
-  +container
-
 .text-button
-  font-size: 1rem
+  font-size: rem($ui-step * 4)
   line-height: 140%
 
 svg
   +transition(fill)
-
   width: 100%
   height: 100%
 
@@ -41,10 +37,10 @@ svg
   overflow: hidden
 
 .text
-  font-size: 1.25rem
+  font-size: rem($ui-step * 5)
   line-height: 140%
   color: $light-color
 
 .caption
-  font-size: 0.75rem
-  line-height: 1rem
+  font-size: rem($ui-step * 3)
+  line-height: rem($ui-step * 4)
