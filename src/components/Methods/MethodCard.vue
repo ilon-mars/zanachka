@@ -26,25 +26,23 @@ defineEmits<{
 <style lang="sass">
 .method
   +transition
-
+  +ui-space(gap, 5)
   display: flex
   flex-direction: column
   align-items: flex-start
-  gap: 20px
 
   &.active
     grid-column: -1 / 1
-    padding: 16px
+    padding: $ui-step * 4
     background-color: $light-opacity-s
 
   &__name
     font-weight: 700
-    font-size: 2rem
+    font-size: rem($ui-step * 8)
     line-height: 120%
 
   &__details
     +transition
-
     color: $light-opacity-l
 
     &:hover
@@ -62,9 +60,9 @@ defineEmits<{
       color: $primary-active
 
     &::after
+      +ui-space(left, 3)
       content: ''
-      margin-left: 12px
       background: url("@/assets/icons/arrow.svg") no-repeat center / contain
-      width: 24px
-      height: 24px
+      width: rem($ui-step * 8)
+      height: rem($ui-step * 8)
 </style>

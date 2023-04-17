@@ -17,7 +17,7 @@ defineEmits<{
 <style lang="sass">
 .add-field
   width: 100%
-  height: 30px
+  height: rem($ui-step * 7.5)
   position: relative
   display: flex
   justify-content: center
@@ -42,7 +42,7 @@ defineEmits<{
     z-index: -1
 
   &__button
-    width: 30px
-    height: 30px
+    width: rem($ui-step * 7.5)
+    height: rem($ui-step * 7.5)
     background-color: $success-color
 </style>

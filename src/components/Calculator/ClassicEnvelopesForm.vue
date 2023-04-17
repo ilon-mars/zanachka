@@ -60,12 +60,12 @@ const { addEnvelope, deleteEnvelope, save, clear } = store;
 .calculator-form
   &__delete-icon
     transform: rotate(45deg)
-    width: 40px
-    height: 40px
+    width: rem($ui-step * 10)
+    height: rem($ui-step * 10)
 
   &__left
+    +ui-space(bottom, 7)
     display: flex
-    margin-bottom: 28px
 
     &--warning
       color: $warning-color

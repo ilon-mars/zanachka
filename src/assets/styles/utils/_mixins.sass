@@ -1,4 +1,54 @@
+@use 'sass:list'
+
 @mixin transition($transition: all, $duration: $transition-duration)
   transition-property: $transition
   transition-duration: $duration
   transition-timing-function: ease-in
+
+@mixin ui-space($direction, $size)
+  @if ($direction == top)
+    margin-top: $ui-step * $size
+
+  @if ($direction == bottom)
+    margin-bottom: $ui-step * $size
+
+  @if ($direction == left)
+    margin-left: $ui-step * $size
+
+  @if ($direction == right)
+    margin-right: $ui-step * $size
+
+  @if ($direction == gap)
+    gap: $ui-step * $size
+
+@mixin breakpoint($breakpoint, $direction: max)
+  @if map-has-key($breakpoints, $breakpoint)
+    $breakpoint-value: map-get($breakpoints, $breakpoint)
+
+    @if ($direction == min)
+      @media (min-width: $breakpoint-value)
+        @content
+
+    @else
+      @media (max-width: $breakpoint-value)
+        @content
+
+  @else
+    @warn 'Invalid breakpoint: #{$breakpoint}.'
+
+@mixin container()
+  // it's backwards because of overriding mediaqueries
+  @for $i from length($breakpoints) to 1
+
+    +breakpoint(list.nth(list.nth($breakpoints, $i), 1))
+      @if(contains($xs-breakpoints, list.nth(list.nth($breakpoints, $i), 1)))
+        width: 100%
+        padding: 0 10px
+
+      @else if(contains($sm-breakpoints, list.nth(list.nth($breakpoints, $i), 1)))
+        width: 100%
+        padding: 0 20px
+
+      @else
+        max-width: list.nth(list.nth($breakpoints, $i - 1), 2)
+        padding: 0

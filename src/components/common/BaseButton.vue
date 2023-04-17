@@ -23,13 +23,13 @@ defineEmits<{
 <style lang="sass">
 .button
   font-weight: 700
-  font-size: 1rem
-  line-height: 1.25rem
+  font-size: rem($ui-step * 4)
+  line-height: rem($ui-step * 5)
   text-align: center
   display: flex
   align-items: center
   justify-content: center
-  padding: 20px 40px
+  padding: $ui-step * 5 $ui-step * 10
 
   &--primary, &--secondary
     &:hover
@@ -51,6 +51,6 @@ defineEmits<{
     color: $light-color
     border: 1px solid $primary-color
 
-  @media (max-width: 640px)
+  +breakpoint('sm')
     width: 100%
 </style>

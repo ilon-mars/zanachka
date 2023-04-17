@@ -1,0 +1,10 @@
+@use 'sass:math'
+
+@function contains($list, $item)
+  @return index($list, $item) != null
+
+@function stripUnit($value)
+  @return math.div($value, $value * 0 + 1)
+
+@function rem($pxValue)
+  @return #{math.div(stripUnit($pxValue), stripUnit($base-font-size))}rem

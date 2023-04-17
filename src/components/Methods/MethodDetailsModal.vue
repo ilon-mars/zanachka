@@ -16,21 +16,22 @@ defineProps<{
 
 <style lang="sass">
 .details
+  +ui-space(gap, 3)
   display: flex
   flex-direction: column
   justify-content: center
-  gap: 12px
 
   &__step
     position: relative
-    padding-left: 20px
+    padding-left: $ui-step * 5
 
     &::before
       content: ''
       position: absolute
-      width: 10px
-      height: 10px
-      top: 4px
+      width: rem($ui-step * 2)
+      height: rem($ui-step * 2)
+      transform: translateY(50%)
+      top: rem($ui-step)
       left: 0
       background-color: $primary-color
       border-radius: 50%
