@@ -50,16 +50,11 @@ const closeModal = () => {
 
 <style lang="sass">
 .methods
-  margin: 120px 0
-
-  @media (max-width: 640px)
-    margin: 60px 0
-
   &__list
+    +ui-space(gap, 7)
     display: grid
     grid-template-columns: repeat(2, 1fr)
-    gap: 28px
 
-    @media (max-width: 640px)
+    +breakpoint('md')
       grid-template-columns: 1fr
 </style>
