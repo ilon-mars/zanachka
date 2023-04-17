@@ -1,8 +1,10 @@
 <template>
   <section class="cover">
-    <div class="container cover__wrapper">
-      <h1 class="cover__title">Заначка</h1>
-      <p class="cover__description">Когда нет сил копить</p>
+    <div class="cover__wrapper">
+      <div class="cover__content">
+        <h1 class="cover__title">Заначка</h1>
+        <p class="cover__description">Когда нет сил копить</p>
+      </div>
     </div>
   </section>
 </template>
@@ -17,54 +19,56 @@
   position: relative
   display: flex
 
-  @media (max-width: 640px)
+  +breakpoint('md')
     flex-direction: column
     justify-content: flex-end
 
-  &::before
-    content: ''
-    position: absolute
+  &__wrapper
     width: 34%
     height: 100%
-    max-width: 520px
     background-color: rgba($dark-color, 0.2)
     backdrop-filter: blur(7.5px)
+    display: flex
+    align-items: center
 
-    @media (max-width: 640px)
+    +breakpoint('xl')
+      width: 50%
+      max-width: initial
+
+    +breakpoint('md')
       width: 100%
       max-width: 100%
-      height: 360px
-      bottom: 0
+      height: 175px
 
+  &__content
+    margin-left: auto
+    width: 400px
 
-  &__wrapper
-    width: 100%
-    position: relative
-    z-index: 1
-    display: flex
-    flex-direction: column
-    height: 100%
-    justify-content: center
+    +breakpoint('xl')
+      width: 480px
 
-    @media (max-width: 640px)
+    +breakpoint('md')
       width: 100%
-      height: 360px
-      margin-top: auto
+      margin: 0 auto
+      padding: 20px
+
+    +breakpoint('xs')
+      padding: 10px
 
   &__title
+    +ui-space(bottom, 5)
     font-weight: 700
-    font-size: 3rem
+    font-size: rem($ui-step * 12)
     line-height: 120%
-    margin-bottom: 1.25rem
 
-    @media (max-width: 640px)
-      font-size: 2rem
-      margin-bottom: 16px
+    +breakpoint('sm')
+      +ui-space(bottom, 4)
+      font-size: rem($ui-step * 8)
 
   &__description
-    font-size: 1.75rem
+    font-size: rem($ui-step * 7)
     line-height: 140%
 
-    @media (max-width: 640px)
-      font-size: 1.5rem
+    +breakpoint('sm')
+      font-size: rem($ui-step * 6)
 </style>
