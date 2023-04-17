@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer__copyright">
         <span class="caption">&#169;&nbsp;{{ year}}</span>
-        <span class="caption">Сервис является ознакомительным. Ваши данные сохраняются локально и не передаются третьим лицам</span>
+        <span class="caption caption--about">Сервис является ознакомительным. Ваши данные сохраняются локально и не передаются третьим лицам</span>
       </div>
     </div>
   </footer>
@@ -24,8 +24,16 @@ const year = new Date().getFullYear()
     justify-content: space-between
     color: $light-opacity-m
 
-    @media (max-width:  640px)
+    +breakpoint('sm')
       flex-direction: column
       align-items: flex-start
       gap: 24px
+
+  .caption
+    &--about
+      +breakpoint('md')
+        max-width: 500px
+
+      +breakpoint('sm')
+        max-width: initial
 </style>
