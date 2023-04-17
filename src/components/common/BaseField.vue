@@ -106,20 +106,20 @@ const vMask = {
   width: 100%
 
   &__label
-    font-size: 1rem
-    line-height: 1.25rem
-    margin-bottom: 12px
+    +ui-space(bottom, 3)
+    font-size: rem($ui-step * 4)
+    line-height: rem($ui-step * 5)
 
     &--editable
       animation: blink 10s infinite both
       border-left: 2px solid transparent
 
   &__label-input
+    +ui-space(bottom, 3)
     background-color: transparent
     border-left: 2px solid $active-color
     color: $light-opacity-l
-    margin-bottom: 12px
-    padding-left: 8px
+    padding-left: $ui-step * 2
 
     &:focus
       outline: none
@@ -133,11 +133,11 @@ const vMask = {
 
     width: 100%
     color: inherit
-    padding: 17px 20px
+    padding: $ui-step * 4 $ui-step * 5
     border: 1px solid $light-opacity-m
     caret-color: $primary-color
-    font-size: 1.25rem
-    line-height: 1.5rem
+    font-size: rem($ui-step * 5)
+    line-height: rem($ui-step * 6)
     background-color: transparent
 
     &:not(:read-only):focus
